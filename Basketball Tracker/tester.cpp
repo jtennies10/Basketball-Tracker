@@ -22,7 +22,16 @@ int main() {
 	cout << steph;
 	cout << "\n\n";
 
-	cout << steph.getPointsPerGame();
+	std::vector<Player> roster = { p, steph };
 
-	//TODO:test the team class
+	//Test the Team class with the created players
+	Team warriors(roster, "Golden State Warriors", 73, 9);
+	cout << warriors;
+	cout << "Total number of players: " << warriors.getNumPlayers();
+	cout << "\nLeading Scorer: " << warriors.getLeadingScorer().getPointsPerGame();
+	cout << "\nLeading Assister: " << warriors.getLeadingAssister().getAssistsPerGame();
+	cout << "\nLeading Assister: " << warriors.getLeadingRebounder().getReboundsPerGame();
+	cout << "\n\nTeam PPG: " << warriors.getTeamPPG();
+	cout << "\nTeam APG: " << warriors.getTeamAPG();
+	cout << "\nTeam RPG: " << warriors.getTeamRPG();
 }

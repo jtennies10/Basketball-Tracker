@@ -4,6 +4,14 @@
 #include "Team.h"
 #include <iomanip>
 
+Team::Team(std::vector<Player> players, std::string teamName, int numWins, int numLosses)
+{
+	this->players = players;
+	this->teamName = teamName;
+	this->numWins = numWins;
+	this->numLosses = numLosses;
+
+}
 
 std::string Team::getTeamName()
 {
@@ -28,43 +36,52 @@ int Team::getNumPlayers()
 //calculates and returns team win percentage
 double Team::getWinPercentage()
 {
-	return numWins / (numWins + numLosses);
+	return numWins * 1.0 / (numWins + numLosses);
 }
 
 double Team::getTeamPPG()
 {
-	double ppg = 0;
+	double totalPoints = 0;
 
-	//iterate through the players vector, collecting each players points per game
+	//iterate through the players vector, collecting each players season points
+	//since season points is a private variable, calculate it by multiplying a players
+	//points per game by their games played
 	for (Player p : players) {
-		ppg += p.getPointsPerGame();
+		totalPoints += (p.getPointsPerGame() * p.getGamesPlayed());
 	}
 
-	return ppg;
+	//divide total points by total games played to get points per game
+	return totalPoints / (numWins + numLosses);
 }
 
 double Team::getTeamAPG()
 {
-	double apg = 0;
+	double totalAssists = 0;
 
-	//iterate through the players vector, collecting each players assists per game
+	//iterate through the players vector, collecting each players season Assists
+	//since season Assists is a private variable, calculate it by multiplying a players
+	//Assists per game by their games played
 	for (Player p : players) {
-		apg += p.getAssistsPerGame();
+		totalAssists += (p.getAssistsPerGame() * p.getGamesPlayed());
 	}
 
-	return apg;
+	//divide total points by total games played to get points per game
+	return totalAssists / (numWins + numLosses);
 }
 
 double Team::getTeamRPG()
 {
-	double rpg = 0;
+	double totalRebounds = 0;
 
-	//iterate through the players vector, collecting each players assists per game
+	//iterate through the players vector, collecting each players season Rebounds
+	//since season Rebounds is a private variable, calculate it by multiplying a players
+	//Rebounds per game by their games played
 	for (Player p : players) {
-		rpg += p.getReboundsPerGame();
+		totalRebounds += (p.getReboundsPerGame() * p.getGamesPlayed());
 	}
 
-	return rpg;
+	//divide total points by total games played to get points per game
+	return totalRebounds / (numWins + numLosses);
 }
 
 Player Team::getLeadingScorer()
@@ -115,17 +132,27 @@ Player Team::getLeadingAssister()
 	return players[leadingAssisterIndex];
 }
 
+std::vector<Player> Team::getRoster()
+{
+	return players;
+}
+
 /*
 Overloads << operator
 Prints out team name, record, and win percentage followed by
 each players name and position
 */
-std::ostream & operator<<(std::ostream & out, Team t)
+std::ostream& operator<<(std::ostream & out, Team t)
 {
 	out << t.getTeamName() << ", " << t.getNumWins() << "-" << t.getNumLosses()
 		<< ", " << std::fixed << std::setprecision(3) << t.getWinPercentage() << "\n";
 	out << "Roster:\n";
-	for (Player p : t.players) {
+	out << std::fixed << std::setprecision(1);
+	for (Player p : t.getRoster()) {
 		out << p.getName() << ", " << p.getPosition() << "\n";
 	}
+
+	out << std::endl;
+
+	return out;
 }

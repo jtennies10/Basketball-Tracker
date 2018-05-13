@@ -14,6 +14,9 @@ private:
 	int numLosses;
 
 public:
+	Team(std::vector<Player> players, std::string teamName="Expansion Team", 
+		int numWins=0, int numLosses=0);
+
 	std::string getTeamName();
 
 	int getNumWins();
@@ -29,12 +32,14 @@ public:
 	Player getLeadingRebounder(); //returns leading rebounder on the team
 	Player getLeadingAssister(); //returns leading assister on the team
 
-	/*
-	Overloads << operator
-	Prints out team name, record, and win percentage followed by
- 	each players name and position
-	*/
-	friend std::ostream& operator<<(std::ostream &out, Team t);
+	std::vector<Player> getRoster();
+	
 };
 
+/*
+Overloads << operator
+Prints out team name, record, and win percentage followed by
+each players name and position
+*/
+std::ostream& operator<<(std::ostream &out, Team t);
 
