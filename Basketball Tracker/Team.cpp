@@ -6,7 +6,12 @@
 
 Team::Team(std::vector<Player> players, std::string teamName, int numWins, int numLosses)
 {
-	this->players = players;
+	if (players.size() <= 15) {
+		this->players = players;
+	}
+	else {
+		this->players = std::vector<Player>();
+	}
 	this->teamName = teamName;
 	this->numWins = numWins;
 	this->numLosses = numLosses;
@@ -92,7 +97,7 @@ Player Team::getLeadingScorer()
 
 		//if the current player's points per game is greater than the leading scorer's
 		//set the leading scorer index to the current player
-		if(players[i].getPointsPerGame() > players[leadingScorerIndex].getPointsPerGame()) {
+		if (players[i].getPointsPerGame() > players[leadingScorerIndex].getPointsPerGame()) {
 			leadingScorerIndex = i;
 		}
 	}
@@ -135,6 +140,25 @@ Player Team::getLeadingAssister()
 std::vector<Player> Team::getRoster()
 {
 	return players;
+}
+
+void Team::addPlayer(Player & p)
+{
+	if (players.size() < 15) {
+		players.push_back(p);
+	}
+}
+
+bool Team::removePlayer(std::string playerName)
+{
+	for (int i = 0; i < players.size(); i++) {
+		if (players[i].getName() == playerName) {
+			players.erase(players.begin()+i);
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /*

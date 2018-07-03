@@ -7,7 +7,7 @@
 class Team {
 private:
 
-	//vector containing all the players on a team
+	//vector containing all the players on a team, will hold a max of 15 players
 	std::vector<Player> players; 
 
 	//holds location and name
@@ -22,6 +22,7 @@ private:
 public:
 
 	/*Constructor providing default values for a team
+	players will only take vectors of size 15 or less(the max roster size in the nba
 	
 	@param players A vector containing the players for a team
 	@param teamName The name of the team
@@ -55,8 +56,22 @@ public:
 
 	std::vector<Player> getRoster();
 
-	//TODO:create addPlayer function
-	//TODO:create removePlayer function
+	/*Adds a player to the team if there is space
+	Sets the players team to the team name
+
+	@param p The player to be added to the team
+	*/
+	void addPlayer(Player &p);
+
+	/*Removes a player from the team if a match is found
+
+	@param playerName The name of the player to be removed if found
+	@return true if the player was found, false if not
+	*/
+	bool removePlayer(std::string playerName);
+	
+	
+	
 	//TODO:add sortByPlayerName function
 	//TODO:add sortByPlayerPosition function
 	//TODO:add sortByPlayerPPG function
