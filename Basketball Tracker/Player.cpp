@@ -88,13 +88,17 @@ bool Player::isInjured()
 	return injured;
 }
 
-void Player::addGamePlayed(int points, int assists, int rebounds)
+bool Player::addGamePlayed(int points, int assists, int rebounds)
 {
-	if (gamesPlayed + 1 <= 82) {
+	if (gamesPlayed + 1 <= 82 && points >= 0 && assists >= 0 && rebounds >= 0) {
 		gamesPlayed++;
 		seasonPoints += points;
 		seasonAssists += assists;
 		seasonRebounds += rebounds;
+		return true;
+	}
+	else {
+		return false;
 	}
 }
 

@@ -6,33 +6,64 @@
 
 class Team {
 private:
-	std::vector<Player> players;
 
-	std::string teamName; //holds location and name
+	//vector containing all the players on a team
+	std::vector<Player> players; 
+
+	//holds location and name
+	std::string teamName; 
 	
+	//number of season wins
 	int numWins;
+
+	//number of season losses
 	int numLosses;
 
 public:
-	Team(std::vector<Player> players, std::string teamName="Expansion Team", 
+
+	/*Constructor providing default values for a team
+	
+	@param players A vector containing the players for a team
+	@param teamName The name of the team
+	@param numWins The team's number of wins this season
+	@param numLosses The team's number of losses this season
+	*/
+	Team(std::vector<Player> players = std::vector<Player>(), std::string teamName="Expansion Team", 
 		int numWins=0, int numLosses=0);
 
 	std::string getTeamName();
 
 	int getNumWins();
+	
 	int getNumLosses();
+	
 	int getNumPlayers();
 
-	double getWinPercentage(); //calculates and returns team win percentage
-	double getTeamPPG(); //returns team points per game
-	double getTeamAPG(); //returns team assists per game
-	double getTeamRPG(); //returns team rebounds per game
+	double getWinPercentage(); 
 	
-	Player getLeadingScorer(); //returns leading scorer on the team
-	Player getLeadingRebounder(); //returns leading rebounder on the team
-	Player getLeadingAssister(); //returns leading assister on the team
+	double getTeamPPG();
+	
+	double getTeamAPG();
+	
+	double getTeamRPG();
+	
+	Player getLeadingScorer();
+	
+	Player getLeadingRebounder();
+	
+	Player getLeadingAssister();
 
 	std::vector<Player> getRoster();
+
+	//TODO:create addPlayer function
+	//TODO:create removePlayer function
+	//TODO:add sortByPlayerName function
+	//TODO:add sortByPlayerPosition function
+	//TODO:add sortByPlayerPPG function
+	//TODO:add sortByPlayerRPG function
+	//TODO:add sortByPlayerAPG function
+
+
 	
 };
 
