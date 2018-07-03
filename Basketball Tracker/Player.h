@@ -7,7 +7,9 @@
 
 class Player {
 private:
-	//TODO:Add team variable
+	
+	//the players team
+	std::string team;
 
 	//the players name
 	std::string name;
@@ -38,7 +40,7 @@ public:
 	@param seasonRebounds Player's total rebounds on the season
 	@param injured Contains a value of true if the player is injured
 	*/
-	Player(std::string name = "Unknown", std::string position = "NA", int gamesPlayed = 0, int seasonPoints = 0,
+	Player(std::string team = "Free Agent", std::string name = "Unknown", std::string position = "NA", int gamesPlayed = 0, int seasonPoints = 0,
 		int seasonAssists = 0, int seasonRebounds = 0, bool injured = false);
 
 
@@ -46,7 +48,7 @@ public:
 
 	std::string getPosition();
 
-	//TODO:Add team getter
+	std::string getTeam();
 
 	int getGamesPlayed();
 	
@@ -58,7 +60,7 @@ public:
 	
 	bool isInjured();
 
-	//TODO:Add team setter
+	void setTeam(std::string team);
 
 	void setInjured(bool injured);
 

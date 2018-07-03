@@ -11,9 +11,10 @@ the max number of games possible before setting member values,
 If games played is greater than the max, then create the player as though they
 have no season stats
 */
-Player::Player(std::string name, std::string position, int gamesPlayed, int seasonPoints,
+Player::Player(std::string team, std::string name, std::string position, int gamesPlayed, int seasonPoints,
 	int seasonAssists, int seasonRebounds, bool injured)
 {
+	this->team = team;
 	this->name = name;
 	if (position == "PG" || position == "SG" || position == "SF"
 		|| position == "PF" || position == "C") {
@@ -46,6 +47,11 @@ std::string Player::getName()
 std::string Player::getPosition()
 {
 	return position;
+}
+
+std::string Player::getTeam()
+{
+	return team;
 }
 
 int Player::getGamesPlayed()
@@ -86,6 +92,11 @@ double Player::getReboundsPerGame()
 bool Player::isInjured()
 {
 	return injured;
+}
+
+void Player::setTeam(std::string team)
+{
+	this->team = team;
 }
 
 bool Player::addGamePlayed(int points, int assists, int rebounds)
