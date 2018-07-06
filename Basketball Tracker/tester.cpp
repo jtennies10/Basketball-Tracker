@@ -1,4 +1,6 @@
 //for testing out the classes and object creation
+//this class will be irrelevant after unit testing files completed
+
 #include "Player.h"
 #include "Team.h"
 #include "League.h"
@@ -7,6 +9,7 @@
 using namespace std;
 
 int main() {
+	
 	Player p;
 	Player steph("Golden State Warriors", "Stephen Curry", "PG", 70, 1400, 256, 201);
 
