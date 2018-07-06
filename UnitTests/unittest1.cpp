@@ -3,9 +3,9 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace UnitTests
+namespace BasketballTracker
 {		
-	TEST_CLASS(UnitTest1)
+	TEST_CLASS(Player)
 	{
 	public:
 		
