@@ -122,6 +122,7 @@ std::ostream& operator<<(std::ostream &out, Player p)
 {
 	out << std::fixed << std::setprecision(1); //show only one decimal place
 	out << "Player: " << p.getName() << std::endl;
+	out << "Team: " << p.getTeam() << std::endl;
 	out << "Position: " << p.getPosition() << std::endl;
 	out << "Games Played: " << p.getGamesPlayed() << std::endl;
 	out << "PPG: " << p.getPointsPerGame() << std::endl;

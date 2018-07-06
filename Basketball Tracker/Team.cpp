@@ -173,7 +173,7 @@ std::ostream& operator<<(std::ostream & out, Team t)
 	out << "Roster:\n";
 	out << std::fixed << std::setprecision(1);
 	for (Player p : t.getRoster()) {
-		out << p.getName() << ", " << p.getPosition() << "\n";
+		out << "\t" << p.getName() << ", " << p.getPosition() << "\n";
 	}
 
 	out << std::endl;

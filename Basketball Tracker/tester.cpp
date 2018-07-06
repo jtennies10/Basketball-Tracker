@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 	Player p;
-	Player steph("Stephen Curry", "PG", 70, 1400, 256, 201);
+	Player steph("Golden State Warriors", "Stephen Curry", "PG", 70, 1400, 256, 201);
 
 	cout << p;
 	cout << "\n\n";
@@ -33,5 +33,5 @@ int main() {
 	cout << "\nLeading Assister: " << warriors.getLeadingRebounder().getReboundsPerGame();
 	cout << "\n\nTeam PPG: " << warriors.getTeamPPG();
 	cout << "\nTeam APG: " << warriors.getTeamAPG();
-	cout << "\nTeam RPG: " << warriors.getTeamRPG();
+	cout << "\nTeam RPG: " << warriors.getTeamRPG() << std::endl;
 }
